@@ -8,6 +8,7 @@ export async function POST(req) {
     await Ticket.create(ticketData);
     return NextResponse.json({ message: "Ticket created" }, { status: 201 });
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ message: "Error", error }, { status: 500 });
   }
 }
