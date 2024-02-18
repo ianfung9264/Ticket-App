@@ -8,9 +8,14 @@ import React from "react";
 const DeleteBlock = ({ id }) => {
   const router = useRouter();
 
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+  const endpoint = `${baseUrl}/api/Tickets/${id}`;
+
   const handleDelete = async () => {
-    // const res = await fetch(`http://localhost:3000/api/Tickets/${id}`, {
-    const res = await fetch(`/api/Tickets/${id}`, {
+    const res = await fetch(endpoint, {
+      // const res = await fetch(`/api/Tickets/${id}`, {
       method: "DELETE",
     });
     if (res.ok) {
